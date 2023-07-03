@@ -22,6 +22,73 @@ The POWO files include a link to WCVP as the `source`, which enables us to map i
 
 POWO provides data dumps from http://sftp.kew.org/pub/data-repositories/WCVP, I have downloaded [wcvp_dwca.zip](http://sftp.kew.org/pub/data-repositories/WCVP/wcvp_dwca.zip) dated 2023-04-27. These files include data on distribution which is not available in the POWO data sent to ChecklistBank.
 
+## RDF
+
+### Upload triples
+
+For small-scale experiments can load directly:
+
+```
+curl 'http://localhost:7878/store?graph=https://powo.science.kew.org' --header Content-Type:application/n-triples --data-binary @powo.nt
+```
+
+## Queries
+
+### Describe a taxon
+
+```
+DESCRIBE <https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:251403-2>
+```
+
+### People who worked on a taxon with links to images
+
+```
+PREFIX schema: <http://schema.org/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT DISTINCT ?creator_name ?creator ?rg_profile ?rg_image_url 
+FROM <https://powo.science.kew.org>
+FROM <https://www.ipni.org>
+FROM <https://orcid.org>
+FROM <https://www.researchgate.net>
+WHERE {
+  # taxon
+  ?taxon rdf:type schema:Taxon .
+  {
+      ?taxon schema:scientificName ?scientificName .
+  }
+  UNION
+  {
+      ?taxon schema:alternateScientificName ?scientificName .
+  }  
+  # names associated with taxon
+  ?scientificName schema:name ?name .
+  
+  # works publishing names, and creators of those works
+  ?scientificName schema:isBasedOn ?work .
+  ?work schema:creator ?creator .
+  {
+    ?creator schema:givenName ?givenName .
+    ?creator schema:familyName ?familyName .
+    BIND(CONCAT(?givenName, " ", ?familyName) AS ?creator_name).
+  }
+  UNION
+  {
+    ?creator schema:name ?creator_name .
+  }
+  
+  # socials for creators
+  OPTIONAL
+  {
+    ?rg schema:sameAs ?creator .
+    ?rg schema:mainEntityOfPage ?rg_profile .
+    ?rg schema:image ?rg_image .
+    ?rg_image schema:contentUrl ?rg_image_url .
+  }
+} 
+```
+
 
 ## Reading
 
