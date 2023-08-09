@@ -22,7 +22,21 @@ The POWO files include a link to WCVP as the `source`, which enables us to map i
 
 POWO provides data dumps from http://sftp.kew.org/pub/data-repositories/WCVP, I have downloaded [wcvp_dwca.zip](http://sftp.kew.org/pub/data-repositories/WCVP/wcvp_dwca.zip) dated 2023-04-27. These files include data on distribution which is not available in the POWO data sent to ChecklistBank.
 
+### Geography
+
+WCVP provides distributional data using World Geographical Scheme for Recording Plant Distributions (WGSRPD) codes for Level-3 areas. GeoJSON for these codes is available from GitHub [here](https://github.com/rdmpage/prior-standards/blob/master/world-geographical-scheme-for-recording-plant-distributions/geojson/level3.geojson) and [here](https://github.com/tdwg/wgsrpd/blob/master/geojson/level3.geojson). I have downloaded the Level-3 data to `data/wgsrpd`.
+
 ## RDF
+
+### Modelling taxa and names
+
+
+### Modelling geography
+
+In the absence of persistent identifiers for the regions, could “fake” them using `https://github.com/tdwg/wgsrpd/blob/master/geojson/level3.geojson#` as the namespace, with each regions as a fragment identifier.
+
+Note that there is a pull request to change the GeoJSON files: https://github.com/tdwg/wgsrpd/pull/10
+
 
 ### Upload triples
 
