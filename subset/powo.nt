@@ -1,0 +1,73 @@
+<https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:251403-2> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Taxon> .
+<https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:251403-2> <http://schema.org/alternateScientificName> <urn:lsid:ipni.org:names:77150994-1> .
+<https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:251403-2> <http://schema.org/alternateName> "Amauropelta laevigata (Mett.) Salino & T.E.Almeida" .
+<urn:lsid:ipni.org:names:77150994-1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/TaxonName> .
+<urn:lsid:ipni.org:names:77150994-1> <http://schema.org/name> "Amauropelta laevigata" .
+<urn:lsid:ipni.org:names:77150994-1> <http://schema.org/author> "(Mett.) Salino & T.E.Almeida" .
+<urn:lsid:ipni.org:names:77150994-1> <http://schema.org/taxonRank> "species" .
+<urn:lsid:ipni.org:names:77150994-1> <http://schema.org/isBasedOn> <urn:lsid:ipni.org:names:77150994-1#60f291bfdc03af648de668898cce009f> .
+<urn:lsid:ipni.org:names:77150994-1#60f291bfdc03af648de668898cce009f> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/CreativeWork> .
+<urn:lsid:ipni.org:names:77150994-1#60f291bfdc03af648de668898cce009f> <http://schema.org/name> "PhytoKeys 57: 25 (2015)" .
+
+<https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:251403-2> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Taxon> .
+<https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:251403-2> <http://schema.org/alternateScientificName> <urn:lsid:ipni.org:names:17096480-1> .
+<https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:251403-2> <http://schema.org/alternateName> "Dryopteris laevigata (Mett.) C.Chr." .
+<urn:lsid:ipni.org:names:17096480-1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/TaxonName> .
+<urn:lsid:ipni.org:names:17096480-1> <http://schema.org/name> "Dryopteris laevigata" .
+<urn:lsid:ipni.org:names:17096480-1> <http://schema.org/author> "(Mett.) C.Chr." .
+<urn:lsid:ipni.org:names:17096480-1> <http://schema.org/taxonRank> "species" .
+<urn:lsid:ipni.org:names:17096480-1> <http://schema.org/isBasedOn> <urn:lsid:ipni.org:names:17096480-1#783e30de5fd7b20c8a4c250278219618> .
+<urn:lsid:ipni.org:names:17096480-1#783e30de5fd7b20c8a4c250278219618> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/CreativeWork> .
+<urn:lsid:ipni.org:names:17096480-1#783e30de5fd7b20c8a4c250278219618> <http://schema.org/name> "Index Filic.: 273 (1905)" .
+
+<https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:251403-2> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Taxon> .
+<https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:251403-2> <http://schema.org/alternateScientificName> <urn:lsid:ipni.org:names:17192290-1> .
+<https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:251403-2> <http://schema.org/alternateName> "Polypodium laevigatum (Mett.) Baker" .
+<urn:lsid:ipni.org:names:17192290-1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/TaxonName> .
+<urn:lsid:ipni.org:names:17192290-1> <http://schema.org/name> "Polypodium laevigatum" .
+<urn:lsid:ipni.org:names:17192290-1> <http://schema.org/author> "(Mett.) Baker" .
+<urn:lsid:ipni.org:names:17192290-1> <http://schema.org/taxonRank> "species" .
+<urn:lsid:ipni.org:names:17192290-1> <http://schema.org/isBasedOn> <urn:lsid:ipni.org:names:17192290-1#7b8dde159a946d9a133602c7609426ce> .
+<urn:lsid:ipni.org:names:17192290-1#7b8dde159a946d9a133602c7609426ce> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/CreativeWork> .
+<urn:lsid:ipni.org:names:17192290-1#7b8dde159a946d9a133602c7609426ce> <http://schema.org/name> "W.J.Hooker & J.G.Baker, Syn. Fil., ed. 2: 505 (1874)" .
+
+<https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:251403-2> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Taxon> .
+<https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:251403-2> <http://schema.org/additionalType> <http://rs.tdwg.org/dwc/terms/Taxon> .
+<https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:251403-2> <http://schema.org/scientificName> <urn:lsid:ipni.org:names:251403-2> .
+<https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:251403-2> <http://schema.org/parentTaxon> <https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:331118-2> .
+<https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:251403-2> <http://schema.org/name> "Thelypteris laevigata (Mett.) R.M.Tryon" .
+<https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:251403-2> <http://schema.org/sameAs> <http://apps.kew.org/wcsp/namedetail.do?name_id=3168850> .
+<https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:251403-2> <http://schema.org/identifier> <https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:251403-2#wcsp> .
+<urn:lsid:ipni.org:names:251403-2> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/TaxonName> .
+<urn:lsid:ipni.org:names:251403-2> <http://schema.org/name> "Thelypteris laevigata" .
+<urn:lsid:ipni.org:names:251403-2> <http://schema.org/author> "(Mett.) R.M.Tryon" .
+<urn:lsid:ipni.org:names:251403-2> <http://schema.org/taxonRank> "species" .
+<urn:lsid:ipni.org:names:251403-2> <http://schema.org/isBasedOn> <urn:lsid:ipni.org:names:251403-2#e78d9d1c37b7a17a3c59a920874c9ba2> .
+<urn:lsid:ipni.org:names:251403-2#e78d9d1c37b7a17a3c59a920874c9ba2> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/CreativeWork> .
+<urn:lsid:ipni.org:names:251403-2#e78d9d1c37b7a17a3c59a920874c9ba2> <http://schema.org/name> "Rhodora 69: 6 (1967)" .
+<https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:251403-2#wcsp> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/PropertyValue> .
+<https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:251403-2#wcsp> <http://schema.org/name> "WCSP" .
+<https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:251403-2#wcsp> <http://schema.org/value> "3168850" .
+
+<https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:251403-2> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Taxon> .
+<https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:251403-2> <http://schema.org/alternateScientificName> <urn:lsid:ipni.org:names:17173610-1> .
+<https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:251403-2> <http://schema.org/alternateName> "Phegopteris laevigata Mett." .
+<urn:lsid:ipni.org:names:17173610-1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/TaxonName> .
+<urn:lsid:ipni.org:names:17173610-1> <http://schema.org/name> "Phegopteris laevigata" .
+<urn:lsid:ipni.org:names:17173610-1> <http://schema.org/author> "Mett." .
+<urn:lsid:ipni.org:names:17173610-1> <http://schema.org/taxonRank> "species" .
+<urn:lsid:ipni.org:names:17173610-1> <http://schema.org/isBasedOn> <urn:lsid:ipni.org:names:17173610-1#13ce52c3f5ae3eb67155ea458a079a4f> .
+<urn:lsid:ipni.org:names:17173610-1#13ce52c3f5ae3eb67155ea458a079a4f> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/CreativeWork> .
+<urn:lsid:ipni.org:names:17173610-1#13ce52c3f5ae3eb67155ea458a079a4f> <http://schema.org/name> "Linnaea 36: 112 (1869)" .
+
+<https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:251403-2> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/Taxon> .
+<https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:251403-2> <http://schema.org/alternateScientificName> <urn:lsid:ipni.org:names:207119-2> .
+<https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:251403-2> <http://schema.org/alternateName> "Polypodium lechleri Baker" .
+<urn:lsid:ipni.org:names:207119-2> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/TaxonName> .
+<urn:lsid:ipni.org:names:207119-2> <http://schema.org/name> "Polypodium lechleri" .
+<urn:lsid:ipni.org:names:207119-2> <http://schema.org/author> "Baker" .
+<urn:lsid:ipni.org:names:207119-2> <http://schema.org/taxonRank> "species" .
+<urn:lsid:ipni.org:names:207119-2> <http://schema.org/isBasedOn> <urn:lsid:ipni.org:names:207119-2#958d6cfe71a3114b7502f5429d0c74f8> .
+<urn:lsid:ipni.org:names:207119-2#958d6cfe71a3114b7502f5429d0c74f8> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/CreativeWork> .
+<urn:lsid:ipni.org:names:207119-2#958d6cfe71a3114b7502f5429d0c74f8> <http://schema.org/name> "Ann. Bot. (Oxford) 5: 456 (1891)" .
+

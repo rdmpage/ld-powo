@@ -1,6 +1,6 @@
 <?php
 
-// Parse (simple) DwCA and convert to data we want
+// Parse wcvp_dwca for location data
 
 require_once(dirname(__FILE__) . '/vendor/autoload.php');
 
@@ -145,8 +145,7 @@ function data_to_schema($obj, $graph, $url, $accepted = true)
 			$taxon->addResource('schema:sameAs', $obj->source);
 		
 			$identifier = $graph->resource($url . '#wcsp', 'schema:PropertyValue');		
-			//$identifier->add("schema:name", "WCSP");
-			$identifier->add("schema:propertyID", "WCSP")	;
+			$identifier->add("schema:name", "WCSP")	;
 			$identifier->add("schema:value", $m['id']);			
 			$taxon->addResource('schema:identifier', $identifier);	
 		}
@@ -162,92 +161,34 @@ function data_to_schema($obj, $graph, $url, $accepted = true)
 //----------------------------------------------------------------------------------------
 
 
-$basedir = dirname(__FILE__) . '/data/powoPlantFamilies';
-$basedir = dirname(__FILE__) . '/data/powoNames';
 
-$metadata_filename = $basedir . '/meta.xml';
 
-$xml = file_get_contents($metadata_filename);
+$filename = dirname(__FILE__) . '/data/wcvp_dwca/wcvp_distribution.csv';
 
-// get info
+$headings = array();
 
-$dom= new DOMDocument;
-$dom->loadXML($xml);
-$xpath = new DOMXPath($dom);
-$xpath->registerNamespace('dwc_text', 'http://rs.tdwg.org/dwc/text/');
+// get data	
+$row_count = 0;
 
-foreach($xpath->query('//dwc_text:core[@rowType="http://rs.tdwg.org/dwc/terms/Taxon"]') as $core)
+$file_handle = fopen($filename, "r");
+while (!feof($file_handle)) 
 {
-	// file
-	$files = $xpath->query ('dwc_text:files/dwc_text:location', $core);
-	foreach ($xpath->query ('dwc_text:files/dwc_text:location', $core) as $file)
-	{		
-		$taxon_filename = $basedir . '/' . $file->firstChild->nodeValue;
-		
-		// debug
-		$taxon_filename = dirname(__FILE__) . '/subset/test.tsv';
-		
-	}
+	$line = trim(fgets($file_handle));
+	
+	$row = explode("|",$line);
 
-	// headings
-	
-	$headings = array();	
-	$defaults = array();
-	
-	// id
-	foreach ($xpath->query ('dwc_text:field', $core) as $id)
-	{		
-		$attributes = array();
-		$attrs = $id->attributes; 
-		
-		foreach ($attrs as $i => $attr)
+	$go = $line != "" && is_array($row) ;
+
+	if ($go)
+	{
+		if ($row_count == 0)
 		{
-			$attributes[$attr->name] = $attr->value; 
+			$headings = $row;		
 		}
-		
-		if (isset($attributes['index']))
-		{
-			$key = $attributes['index'];
-			$value = $attributes['term'];
-			
-			$value = str_replace('http://rs.tdwg.org/dwc/terms/', '', $value);
-			$value = str_replace('http://purl.org/dc/terms/', '', $value);
-		
-			$headings[$key] = $value;
-			
-			if (isset($attributes['default']))
-			{
-				$defaults[$key] = $attributes['default'];
-			}
-		}
-	}
-	
-	if (0)
-	{
-		print_r($headings);
-	}
-	
-	if (0)
-	{
-		print_r($defaults);
-	}	
-	
-	// get data	
-	$row_count = 0;
-	
-	$file_handle = fopen($taxon_filename, "r");
-	while (!feof($file_handle)) 
-	{
-		$line = trim(fgets($file_handle));
-		
-		$row = explode("\t",$line);
-	
-		$go = $line != "" && is_array($row) ;
-	
-		if ($go)
+		else
 		{
 			$obj = new stdclass;
-	
+		
 			foreach ($row as $k => $v)
 			{
 				if ($v != '')
@@ -255,100 +196,30 @@ foreach($xpath->query('//dwc_text:core[@rowType="http://rs.tdwg.org/dwc/terms/Ta
 					$obj->{$headings[$k]} = $v;
 				}
 			}
-	
-			// print_r($obj);	
-			
-			
-			// remodel as schema.org
-			
-			$done = false;
-			$graph = null;
-			
-			if (isset($obj->parentNameUsageID))
-			{
-				// accepted name, so url is for this taxon			
-				$url = 'https://powo.science.kew.org/taxon/' . $obj->taxonID;					
-				$graph = data_to_schema($obj, $graph, $url, true);		
-			}
-			else
-			{
-				// synonym name, so url is for accepted taxon			
-				$url = 'https://powo.science.kew.org/taxon/' . $obj->acceptedNameUsageID;					
-				$graph = data_to_schema($obj, $graph, $url, false);					
-			
-			}
-						
-			if ($graph)
-			{			
-				// serialise
-			
-				// Triples 
-				$format = \EasyRdf\Format::getFormat('ntriples');
-
-				$serialiserClass  = $format->getSerialiserClass();
-				$serialiser = new $serialiserClass();
-
-				$triples = $serialiser->serialise($graph, 'ntriples');
-				
-				// Remove JSON-style encoding
-				$told = explode("\n", $triples);
-				$tnew = array();
-
-				foreach ($told as $s)
-				{
-					$tnew[] = unescapeString($s);
-				}
-
-				$triples = join("\n", $tnew);			
-							
-				echo $triples . "\n";
-
-				// JSON-LD
-				if (1)
-				{
-					$context = new stdclass;
-					$context->{'@vocab'} = 'http://schema.org/';
-					$context->rdf =  "http://www.w3.org/1999/02/22-rdf-syntax-ns#";
-					$context->dwc =  "http://rs.tdwg.org/dwc/terms/";
-
-					$additionalType = new stdclass;
-					$additionalType->{'@id'} = "additionalType";
-					$additionalType->{'@type'} = "@id";
-					$additionalType->{'@container'} = "@set";
-
-					$context->{'additionalType'} = $additionalType;
-
-					$sameAs = new stdclass;
-					$sameAs->{'@id'} = "sameAs";
-					$sameAs->{'@type'} = "@id";
-					$context->sameAs = $sameAs;			
-
-					// Frame document
-					$frame = (object)array(
-						'@context' => $context,
-						'@type' => 'http://schema.org/Taxon'
-					);	
-
-					// Use same libary as EasyRDF but access directly to output ordered list of authors
-					$nquads = new NQuads();
-					// And parse them again to a JSON-LD document
-					$quads = $nquads->parse($triples);		
-					$doc = JsonLD::fromRdf($quads);
-
-					$obj = JsonLD::frame($doc, $frame);
-
-					echo json_encode($obj, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
-				}	
-			}				
-		}	
-		$row_count++;	
 		
-		if ($row_count > 10)
-		{
-			exit();
+			print_r($obj);	
+			
+			// output link to taxon
+			
+			$taxon_uri = 'http://apps.kew.org/wcsp/namedetail.do?name_id=' . $obj->coreid;
+			
+			$location_uri = $obj->locationid;
+			
+			echo $taxon_uri . " -> " . $location_uri . "\n";
+			
+			// need a URI for the area, and need a way of distinguishing between native 
+			// and non-native occurrences, perhaps using roles in schema.org?
+			
 		}
-	
 	}		
+
+	$row_count++;	
+	
+	if ($row_count > 10)
+	{
+		exit();
+	}
+	
 
 }
 

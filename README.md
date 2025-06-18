@@ -46,6 +46,10 @@ For small-scale experiments can load directly:
 curl 'http://localhost:7878/store?graph=https://powo.science.kew.org' --header Content-Type:application/n-triples --data-binary @powo.nt
 ```
 
+### Extra triples while we experiment
+
+curl 'http://localhost:7878/store' --header Content-Type:application/n-triples --data-binary @extra.nt
+
 ## Queries
 
 ### Describe a taxon
